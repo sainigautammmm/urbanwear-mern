@@ -19,9 +19,17 @@ const cookieParser = require('cookie-parser');
 connectDatabase();
 server.use(cookieParser());
 // Middleware
+// server.use(cors({
+//   origin: "http://localhost:5173",  "https://urbanwear-mern.vercel.app" // Your frontend URL
+//   credentials: true, // Enable credentials for CORS
+// }));
+
 server.use(cors({
-  origin: "http://localhost:5173", // Your frontend URL
-  credentials: true, // Enable credentials for CORS
+  origin: [
+    "http://localhost:5173",
+    "https://urbanwear-mern.vercel.app"
+  ],
+  credentials: true,
 }));
 
 server.use(express.json()); // Parse JSON bodies
