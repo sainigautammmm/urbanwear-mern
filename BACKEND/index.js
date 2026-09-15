@@ -25,11 +25,8 @@ server.use(cookieParser());
 // }));
 
 server.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://urbanwear-mern.vercel.app"
-  ],
-  credentials: true,
+  origin: "https://urbanwear-mern.vercel.app",
+  credentials: true
 }));
 
 server.use(express.json()); // Parse JSON bodies
