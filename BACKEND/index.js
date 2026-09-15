@@ -25,7 +25,17 @@ server.use(cookieParser());
 // }));
 
 server.use(cors({
-  origin: "https://urbanwear-mern.vercel.app",
+  origin: function (origin, callback) {
+    if (
+      !origin ||
+      origin.endsWith(".vercel.app") ||
+      origin === "http://localhost:5173"
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 
